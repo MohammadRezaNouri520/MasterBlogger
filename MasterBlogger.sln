@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Infrastructure.EFCore", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Presentation.AspNetCoreRazorPages", "MB.Presentation.AspNetCoreRazorPages\MB.Presentation.AspNetCoreRazorPages.csproj", "{67730F38-058E-43F8-8ED9-B3B9DC400BA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB.Infrastructure.Configure", "MB.Infrastructure.Configure\MB.Infrastructure.Configure.csproj", "{153483D9-38D2-4EB5-840C-CBC2B34D0736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Infrastructure.Configure", "MB.Infrastructure.Configure\MB.Infrastructure.Configure.csproj", "{153483D9-38D2-4EB5-840C-CBC2B34D0736}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

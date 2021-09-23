@@ -13,6 +13,7 @@ namespace MB.Application
             _articleCategoryRepository = articleCategoryRepository;
         }
 
+
         public List<ArticleCategoryViewModel> List()
         {
             var articleCategories = _articleCategoryRepository.GetAll();
@@ -28,6 +29,12 @@ namespace MB.Application
                 });
             }
             return result;
+        }
+
+        public void Create(CreateArticleCategory command)
+        {
+            var articleCategroy = new ArticleCategory(command.Title);
+            _articleCategoryRepository.Add(articleCategroy);
         }
     }
 }
