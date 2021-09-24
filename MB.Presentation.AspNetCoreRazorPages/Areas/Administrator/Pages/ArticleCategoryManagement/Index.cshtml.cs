@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MB.Application.Contracts.ArticleCategory;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MB.Presentation.AspNetCoreRazorPages.Areas.Administrator.Pages.ArticleCategoryManagement
@@ -19,5 +20,25 @@ namespace MB.Presentation.AspNetCoreRazorPages.Areas.Administrator.Pages.Article
         {
             ArticleCategories = _articleCategoryApplication.List();
         }
+
+        public RedirectToPageResult OnGetDelete(long id)
+        {
+            _articleCategoryApplication.Remove(id);
+            return RedirectToPage("./Index");
+        }
+
+        // 1st way:
+        public RedirectToPageResult OnGetActivate(long id)
+        {
+            _articleCategoryApplication.Activate(id);
+            return RedirectToPage("./Index");
+        }
+
+        // 2nd way:
+        //public RedirectToPageResult OnPostActivate(long id)
+        //{
+        //    _articleCategoryApplication.Activate(id);
+        //    return RedirectToPage("./Index");
+        //}
     }
 }

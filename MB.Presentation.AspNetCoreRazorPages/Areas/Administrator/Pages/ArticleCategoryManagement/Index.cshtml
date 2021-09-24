@@ -43,7 +43,7 @@
                                         <th>Title</th>
                                         <th>Date Modified</th>
                                         <th>Status</th>
-                                        <th>Orders</th>
+                                        <th>Operations</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,8 +66,21 @@
                                                 }
                                             </td>
                                             <td>
-                                                <a asp-area="Administrator" asp-page="#" asp-route-id="@articleCategory.Id" class="btn btn-warning">Edit</a>
-                                                <a asp-area="Administrator" asp-page="#" asp-route-id="@articleCategory.Id" class="btn btn-danger">Delete</a>
+                                                <a asp-area="Administrator" asp-page="./Edit" asp-route-id="@articleCategory.Id" class="btn btn-warning">Edit</a>
+                                                @if (articleCategory.IsDeleted == false)
+                                                {
+                                                    <a asp-page-handler="Delete" asp-route-id="@articleCategory.Id" class="btn btn-danger">Delete</a>
+                                                }
+                                                else
+                                                {
+                                                    <!-- 1st way -->
+                                                    <a asp-page-handler="Activate" asp-route-id="@articleCategory.Id" class="btn btn-success">Active</a>
+                                                    <!-- 2nd way -->
+                                                    @*<form method="post" asp-page-handler="Activate">
+                                                        <input type="hidden" name="id" value="@articleCategory.Id" />
+                                                        <button type="submit" class="btn btn-success">Activate</button>
+                                                    </form>*@
+                                                }
                                             </td>
                                         </tr>
                                     }

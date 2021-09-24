@@ -36,5 +36,36 @@ namespace MB.Application
             var articleCategroy = new ArticleCategory(command.Title);
             _articleCategoryRepository.Add(articleCategroy);
         }
+
+        public RenameArticleCategory GetBy(long id)
+        {
+            var articleCategory = _articleCategoryRepository.GetBy(id);
+            return new RenameArticleCategory 
+            { 
+                Id=articleCategory.Id,
+                Title=articleCategory.Title
+            };
+        }
+
+        public void Rename(RenameArticleCategory command)
+        {
+            var articleCategory = _articleCategoryRepository.GetBy(command.Id);
+            articleCategory.Rename(command.Title);
+            _articleCategoryRepository.Save();
+        }
+
+        public void Remove(long id)
+        {
+            var articleCategory = _articleCategoryRepository.GetBy(id);
+            articleCategory.Remove();
+            _articleCategoryRepository.Save();
+        }
+
+        public void Activate(long id)
+        {
+            var articleCategory = _articleCategoryRepository.GetBy(id);
+            articleCategory.Activate();
+            _articleCategoryRepository.Save();
+        }
     }
 }

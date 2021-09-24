@@ -16,12 +16,22 @@ namespace MB.Infrastructure.EFCore.Repositories
         public void Add(ArticleCategory entity)
         {
             _context.ArticleCategories.Add(entity);
-            _context.SaveChanges();
+            Save();
         }
 
         public List<ArticleCategory> GetAll()
         {
             return _context.ArticleCategories.OrderByDescending(x => x.Id).ToList();
+        }
+
+        public ArticleCategory GetBy(long id)
+        {
+            return _context.ArticleCategories.FirstOrDefault(a => a.Id == id);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
         }
     }
 }

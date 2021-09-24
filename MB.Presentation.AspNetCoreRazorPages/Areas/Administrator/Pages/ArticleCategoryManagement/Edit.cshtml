@@ -1,0 +1,45 @@
+﻿@page "{id:long}"
+@model MB.Presentation.AspNetCoreRazorPages.Areas.Administrator.Pages.ArticleCategoryManagement.EditModel
+@{
+    ViewData["Title"] = "Edit Article Category";
+}
+
+<!-- Page Header-->
+<header class="bg-white shadow-sm px-4 py-3 z-index-20">
+    <div class="container-fluid px-0">
+        <h2 class="mb-0 p-1">Categories</h2>
+    </div>
+</header>
+<!-- Breadcrumb-->
+<div class="bg-white">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3">
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/Index">Home</a></li>
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/ArticleCategoryManagement/Index">Categories</a></li>
+                <li class="breadcrumb-item active fw-light" aria-current="page">Edit Category</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Basic Form-->
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="h4 mb-0">Edit Category</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
+                    <input type="hidden" asp-for="@Model.ArticleCategory.Id" />
+                    <label class="form-label" asp-for="@Model.ArticleCategory.Title"></label>
+                    <input class="form-control" asp-for="@Model.ArticleCategory.Title" aria-describedby="titleHelp">
+                    <div class="form-text" id="titleHelp">Enter the category title.</div>
+                </div>
+                <a class="btn btn-secondary" asp-area="Administrator" asp-page="./Index">Back</a>
+                <button class="btn btn-warning" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
