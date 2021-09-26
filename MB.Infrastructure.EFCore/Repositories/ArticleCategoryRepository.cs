@@ -19,6 +19,11 @@ namespace MB.Infrastructure.EFCore.Repositories
             Save();
         }
 
+        public bool Exists(string title)
+        {
+            return _context.ArticleCategories.Any(x => x.Title == title);
+        }
+
         public List<ArticleCategory> GetAll()
         {
             return _context.ArticleCategories.OrderByDescending(x => x.Id).ToList();

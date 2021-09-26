@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MB.Domain.ArticleCategoryAgg.Services;
+using System;
 
 namespace MB.Domain.ArticleCategoryAgg
 {
@@ -9,15 +10,24 @@ namespace MB.Domain.ArticleCategoryAgg
         public DateTime CreationDate { get; private set; }
         public bool IsDeleted { get; private set; }
 
-        public ArticleCategory(string title)
+        public ArticleCategory(string title, IArticleCategoryValidatorService validatorService)
         {
+            GaurdAgainstEmptyTitle(title);
+            validatorService.CheckThisRecordAlreadyExists(title);
             Title = title;
             CreationDate = DateTime.Now;
             IsDeleted = false;
         }
 
+        public void GaurdAgainstEmptyTitle(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+                throw new ArgumentNullException();
+        }
+
         public void Rename(string title)
         {
+            GaurdAgainstEmptyTitle(title);
             Title = title;
         }
 
@@ -30,5 +40,7 @@ namespace MB.Domain.ArticleCategoryAgg
         {
             IsDeleted = false;
         }
+
+
     }
 }

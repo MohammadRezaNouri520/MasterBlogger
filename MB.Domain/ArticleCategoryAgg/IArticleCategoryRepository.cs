@@ -8,5 +8,6 @@ namespace MB.Domain.ArticleCategoryAgg
         ArticleCategory GetBy(long id);
         void Add(ArticleCategory entity);
         void Save();
+        bool Exists(string title);
     }
 }
