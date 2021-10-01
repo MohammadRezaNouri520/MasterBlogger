@@ -1,4 +1,5 @@
-﻿using MB.Domain.ArticleCategoryAgg;
+﻿using MB.Domain.ArticleAgg;
+using MB.Domain.ArticleCategoryAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,6 +14,9 @@ namespace MB.Infrastructure.EFCore.Mappings
             builder.Property(a => a.Title).HasMaxLength(256).IsRequired();
             builder.Property(a => a.CreationDate).IsRequired();
             builder.Property(a => a.IsDeleted).IsRequired();
+
+            builder.HasMany<Article>(ac => ac.Articles)
+                .WithOne(a => a.ArticleCategory).HasForeignKey(a => a.CategoryId);
         }
     }
 }

@@ -10,5 +10,7 @@ namespace MB.Application.Contracts.ArticleCategory
         void Rename(RenameArticleCategory command);
         void Remove(long id);
         void Activate(long id);
+
+        List<ArticleCategorySelectList> GetSelectList();
     }
 }

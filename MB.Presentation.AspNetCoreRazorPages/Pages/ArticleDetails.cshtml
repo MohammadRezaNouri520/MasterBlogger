@@ -1,34 +1,34 @@
-﻿@page
+﻿@page "{id:long}"
 @model ArticleDetailsModel
 @{
-    ViewData["Title"] = "ArticleDetails";
+    ViewData["Title"] = Model.Article.Title;
 }
 
 <main class="post blog-post col-lg-12">
     <div class="container">
         <div class="post-single">
             <div class="post-thumbnail">
-                <img src="~/Client/img/blog-post-3.jpeg" alt="" class="img-fluid">
+                <img src="@Model.Article.Image" alt="@Model.Article.Title" title="@Model.Article.Title" class="img-fluid">
             </div>
             <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
-                    <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
+                    <div class="category"><a href="#">@Model.Article.ArticleCategory</a></div>
                 </div>
                 <h1>
-                    Diversity in Engineering: The Effect on Questions
+                    @Model.Article.Title
                     <a href="#"><i class="fa fa-bookmark-o"></i></a>
                 </h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
                     <div class="d-flex align-items-center flex-wrap">
-                        <div class="date"><i class="icon-clock"></i> 2 months ago</div>
+                        <div class="date"><i class="icon-clock"></i>@Model.Article.CreationDate</div>
                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                     </div>
                 </div>
                 <div class="post-body">
                     <p class="lead">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        @Model.Article.ShortDescription
                     </p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    @Model.Article.Content
                 </div>
 
                 <div class="post-comments">

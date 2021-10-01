@@ -2,6 +2,7 @@
 using MB.Domain.ArticleCategoryAgg;
 using MB.Domain.ArticleCategoryAgg.Services;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MB.Application
 {
@@ -69,6 +70,16 @@ namespace MB.Application
             var articleCategory = _articleCategoryRepository.GetBy(id);
             articleCategory.Activate();
             _articleCategoryRepository.Save();
+        }
+
+        public List<ArticleCategorySelectList> GetSelectList()
+        {
+            return _articleCategoryRepository.GetAll()
+                .Select(a => new ArticleCategorySelectList 
+                {
+                    Id=a.Id,
+                    Title=a.Title
+                }).ToList();
         }
     }
 }
