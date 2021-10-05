@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Presentation.AspNetCoreR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Infrastructure.Configure", "MB.Infrastructure.Configure\MB.Infrastructure.Configure.csproj", "{153483D9-38D2-4EB5-840C-CBC2B34D0736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB.Infrastructure.Query", "MB.Infrastructure.Query\MB.Infrastructure.Query.csproj", "{7E10B3FB-38B1-46B9-BD59-45BDB32A023A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Infrastructure.Query", "MB.Infrastructure.Query\MB.Infrastructure.Query.csproj", "{7E10B3FB-38B1-46B9-BD59-45BDB32A023A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Framework", "01_Framework\01_Framework.csproj", "{8D518F4F-60FD-4753-ADE1-0A6AA0EC40E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{7E10B3FB-38B1-46B9-BD59-45BDB32A023A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E10B3FB-38B1-46B9-BD59-45BDB32A023A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E10B3FB-38B1-46B9-BD59-45BDB32A023A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D518F4F-60FD-4753-ADE1-0A6AA0EC40E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D518F4F-60FD-4753-ADE1-0A6AA0EC40E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D518F4F-60FD-4753-ADE1-0A6AA0EC40E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D518F4F-60FD-4753-ADE1-0A6AA0EC40E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

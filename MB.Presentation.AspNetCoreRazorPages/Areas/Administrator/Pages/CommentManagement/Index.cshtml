@@ -1,0 +1,119 @@
+﻿@page
+@using MB.Domain.CommentAgg
+@model MB.Presentation.AspNetCoreRazorPages.Areas.Administrator.Pages.CommentManagement.IndexModel
+@{
+    ViewData["Title"] = "Comments Management";
+}
+
+
+<!-- Page Header-->
+<header class="bg-white shadow-sm px-4 py-3 z-index-20">
+    <div class="container-fluid px-0">
+        <h2 class="mb-0 p-1">Comments</h2>
+    </div>
+</header>
+<!-- Breadcrumb-->
+<div class="bg-white">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3">
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/Index">Home</a></li>
+                <li class="breadcrumb-item active fw-light" aria-current="page">Comments</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Table -->
+<section class="tables">
+    <div class="container-fluid">
+        <div class="row gy-4">
+
+            <div class="col-12">
+                <div class="card mb-0">
+                    <div class="card-header">
+                        <div class="card-close">
+
+                        </div>
+                        <h3 class="h4 mb-0">Comments</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table mb-0 table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Article</th>
+                                        <th>Date Modified</th>
+                                        <th>Status</th>
+                                        <th>Operations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var comment in Model.Comments)
+                                    {
+                                        <tr>
+                                            <th>@comment.Id</th>
+                                            <td>@comment.Name</td>
+                                            <td>@comment.Email</td>
+                                            <td>@comment.ArticleTitle</td>
+                                            <td>@comment.CreationDate</td>
+                                            <td>
+                                                @switch (comment.Status)
+                                                {
+                                                    case Statuses.New:
+                                                        {
+                                                            @*<i class="fa fa-exclamation text-warning"></i>*@
+                                                            <span class="text-warning">Unread</span>
+                                                            break;
+                                                        }
+                                                    case Statuses.Confirm:
+                                                        {
+                                                            @*<i class="fa fa-check text-success"></i>*@
+                                                            <span class="text-success">Confirmed</span>
+                                                            break;
+                                                        }
+                                                    case Statuses.Cancel:
+                                                        {
+                                                            @*<i class="fa fa-close text-warning"></i>*@
+                                                            <span class="text-danger">Canceled</span>
+                                                            break;
+                                                        }
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-page="./ReadComment" asp-route-id="@comment.Id" class="btn btn-info">Read</a>
+
+                                                @switch (comment.Status)
+                                                {
+                                                    case Statuses.New:
+                                                        {
+                                                            <a asp-page-handler="Confirm" asp-route-id="@comment.Id" class="btn btn-success">Confirm</a>
+                                                            <a asp-page-handler="Cancel" asp-route-id="@comment.Id" class="btn btn-danger">Cancel</a>
+                                                            break;
+                                                        }
+                                                    case Statuses.Confirm:
+                                                        {
+                                                            <a asp-page-handler="Cancel" asp-route-id="@comment.Id" class="btn btn-danger">Cancel</a>
+                                                            break;
+                                                        }
+                                                    case Statuses.Cancel:
+                                                        {
+                                                            <a asp-page-handler="Confirm" asp-route-id="@comment.Id" class="btn btn-success">Confirm</a>
+                                                            break;
+                                                        }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

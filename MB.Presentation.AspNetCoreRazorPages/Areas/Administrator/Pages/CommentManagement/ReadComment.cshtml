@@ -1,0 +1,56 @@
+﻿@page "{id:long}"
+@model MB.Presentation.AspNetCoreRazorPages.Areas.Administrator.Pages.CommentManagement.ReadCommentModel
+@{
+}
+
+<!-- Page Header-->
+<header class="bg-white shadow-sm px-4 py-3 z-index-20">
+    <div class="container-fluid px-0">
+        <h2 class="mb-0 p-1">Comments</h2>
+    </div>
+</header>
+<!-- Breadcrumb-->
+<div class="bg-white">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3">
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/Index">Home</a></li>
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/CommentManagement/Index">Comments</a></li>
+                <li class="breadcrumb-item active fw-light" aria-current="page">Comment Details</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- Comment Details -->
+<section>
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-12">
+                <div class="card mb-0">
+                    <div class="card-header position-relative">
+                        <h3 class="h4 mb-0">@Model.Comment.Email</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-2 text-center">
+                                <ul class="list-inline mb-0">
+                                    <li class="me-2 m-3"><span class="small text-gray-500">@Model.Comment.CreationDate</span></li>
+                                    <li></li>
+                                    <li class="me-2 m-2"><span class="text-info lh-1 d-block">@Model.Comment.ArticleTitle</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-10 border-start border-gray-200 p-3">
+                                <h5 class="fw-normal">@Model.Comment.Name :</h5>
+                                <p class="mb-0 text-gray-600">@Model.Comment.Message</p>
+                                <hr />
+                                <a asp-page="./Index" class="btn btn-secondary">Back To List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

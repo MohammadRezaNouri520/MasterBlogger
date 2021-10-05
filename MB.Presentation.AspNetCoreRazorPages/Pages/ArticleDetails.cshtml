@@ -21,35 +21,38 @@
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="date"><i class="icon-clock"></i>@Model.Article.CreationDate</div>
-                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        <div class="comments meta-last"><i class="icon-comment"></i>@Model.Article.CommentCount</div>
                     </div>
                 </div>
                 <div class="post-body">
                     <p class="lead">
                         @Model.Article.ShortDescription
                     </p>
-                    @Model.Article.Content
+                    @Model.Article.Message
                 </div>
 
                 <div class="post-comments">
                     <header>
-                        <h3 class="h6">Post Comments<span class="no-of-comments">12</span></h3>
+                        <h3 class="h6">Post Comments<span class="no-of-comments">(@Model.Article.CommentCount)</span></h3>
                     </header>
-                    <div class="comment">
-                        <div class="comment-header d-flex justify-content-between">
-                            <div class="user d-flex align-items-center">
-                                <div class="image">
-                                    <img src="~/Client/img/user.svg" alt="..." class="img-fluid rounded-circle">
-                                </div>
-                                <div class="title">
-                                    <strong>John Doe</strong><span class="date">26 May | 2016e</span>
+                    @foreach (var comment in Model.Article.Comments)
+                    {
+                        <div class="comment">
+                            <div class="comment-header d-flex justify-content-between">
+                                <div class="user d-flex align-items-center">
+                                    <div class="image">
+                                        <img src="~/Client/img/user.svg" alt="..." class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="title">
+                                        <strong>@comment.Name</strong><span class="date">@comment.CreationDate</span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="comment-body">
+                                <p>@comment.Message</p>
+                            </div>
                         </div>
-                        <div class="comment-body">
-                            <p>Hello</p>
-                        </div>
-                    </div>
+                    }
                 </div>
 
                 <div class="add-comment">
@@ -67,7 +70,7 @@
                             <div class="form-group col-md-12">
                                 <textarea name="Message" id="Message" placeholder="Type your comment" class="form-control"></textarea>
                             </div>
-                            <input type="hidden" name="ArticleId" value="0" />
+                            <input type="hidden" name="ArticleId" value="@Model.Article.Id" />
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-secondary">Submit Comment</button>
                             </div>

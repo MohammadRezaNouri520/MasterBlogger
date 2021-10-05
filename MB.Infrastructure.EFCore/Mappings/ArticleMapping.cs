@@ -1,5 +1,6 @@
 ﻿using MB.Domain.ArticleAgg;
 using MB.Domain.ArticleCategoryAgg;
+using MB.Domain.CommentAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,7 +21,12 @@ namespace MB.Infrastructure.EFCore.Mappings
             builder.Property(a => a.CategoryId).IsRequired();
 
             builder.HasOne<ArticleCategory>(a => a.ArticleCategory)
-                .WithMany(ac => ac.Articles).HasForeignKey(a => a.CategoryId);
+                .WithMany(ac => ac.Articles)
+                .HasForeignKey(a => a.CategoryId);
+            
+            builder.HasMany<Comment>(a => a.Comments)
+                .WithOne(c => c.Article)
+                .HasForeignKey(c => c.ArticleId);
             
         }
     }
